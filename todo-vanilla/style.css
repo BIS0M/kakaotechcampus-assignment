@@ -1,0 +1,232 @@
+/* ===== 기본 리셋 ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-bg: #f4f5f7;
+  --color-surface: #ffffff;
+  --color-primary: #4f46e5;
+  --color-primary-dark: #4338ca;
+  --color-text: #1f2937;
+  --color-muted: #9ca3af;
+  --color-border: #e5e7eb;
+  --color-danger: #ef4444;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  font-family: "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 16px;
+}
+
+/* ===== 앱 컨테이너 ===== */
+.app {
+  width: 100%;
+  max-width: 480px;
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px 24px;
+}
+
+.app__header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.app__title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.app__subtitle {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--color-muted);
+}
+
+/* ===== 입력 폼 ===== */
+.todo-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.todo-form__input {
+  flex: 1;
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.todo-form__input:focus {
+  border-color: var(--color-primary);
+}
+
+.todo-form__button {
+  padding: 0 18px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--color-primary);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.todo-form__button:hover {
+  background: var(--color-primary-dark);
+}
+
+/* ===== 필터 ===== */
+.filters {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.filters__button {
+  flex: 1;
+  padding: 8px 0;
+  font-size: 13px;
+  color: var(--color-muted);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.filters__button:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.filters__button.is-active {
+  color: #fff;
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* ===== 할 일 목록 ===== */
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: #fafafa;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  animation: fadeIn 0.2s ease;
+}
+
+.todo-item__checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.todo-item__text {
+  flex: 1;
+  font-size: 15px;
+  word-break: break-all;
+  cursor: pointer;
+}
+
+.todo-item.is-completed .todo-item__text {
+  color: var(--color-muted);
+  text-decoration: line-through;
+}
+
+.todo-item__delete {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  font-size: 16px;
+  line-height: 1;
+  color: var(--color-muted);
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.todo-item__delete:hover {
+  color: #fff;
+  background: var(--color-danger);
+}
+
+/* ===== 빈 상태 안내 ===== */
+.empty-message {
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 14px;
+  padding: 32px 0;
+}
+
+.empty-message.is-hidden {
+  display: none;
+}
+
+/* ===== 하단 영역 ===== */
+.app__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+  font-size: 13px;
+}
+
+.app__count {
+  color: var(--color-muted);
+}
+
+.app__clear {
+  color: var(--color-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.app__clear:hover {
+  color: var(--color-danger);
+}
+
+/* ===== 애니메이션 ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
