@@ -8,6 +8,9 @@
   --color-muted: #9b9ba8;
   --color-border: #e6e3f0;
   --color-danger: #e0405b;
+  --color-danger-dark: #c8344c;
+  --color-success: #22c55e;
+  --color-success-dark: #1ba94c;
   --radius: 10px;
 }
 
@@ -289,31 +292,57 @@ body {
 }
 
 .todo-item__button {
-  padding: 5px 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
   font-size: 13px;
   font-weight: 600;
-  background: transparent;
   border: 1px solid var(--color-border);
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.15s;
 }
 
-/* 수정 / 저장 버튼 */
+/* 버튼 안의 아이콘은 블록으로 깔끔하게 정렬 */
+.todo-item__button svg {
+  display: block;
+}
+
+/* 수정 버튼: 흰색 배경 + 선으로만 된 연필 아이콘 */
+.todo-item__button--edit {
+  color: var(--color-text); /* 연필 외곽선 색 */
+  background: #fff;
+  border-color: var(--color-border);
+}
+
 .todo-item__button--edit:hover {
   color: var(--color-primary);
   border-color: var(--color-primary);
 }
 
-/* 완료 버튼 */
-.todo-item__button--complete:hover {
-  color: var(--color-primary);
-  border-color: var(--color-primary);
+/* 완료 버튼: 초록색 배경 + 흰색 체크 아이콘 */
+.todo-item__button--complete {
+  color: #fff;
+  background: var(--color-success);
+  border-color: var(--color-success);
 }
 
-/* 삭제 버튼 */
-.todo-item__button--delete:hover {
+.todo-item__button--complete:hover {
+  background: var(--color-success-dark);
+  border-color: var(--color-success-dark);
+}
+
+/* 삭제 버튼: 빨간색 배경 + 흰색 X 아이콘 */
+.todo-item__button--delete {
   color: #fff;
   background: var(--color-danger);
   border-color: var(--color-danger);
+}
+
+.todo-item__button--delete:hover {
+  background: var(--color-danger-dark);
+  border-color: var(--color-danger-dark);
 }

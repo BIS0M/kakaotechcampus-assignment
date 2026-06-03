@@ -324,6 +324,16 @@ function createEditInput(todo) {
   return editInput;
 }
 
+// 버튼에 사용할 인라인 SVG 아이콘 (라이브러리 없이 선/색만으로 표현)
+//  - 연필: 선만 있는 외곽선(stroke) 아이콘 → 버튼 글자색을 따라감
+//  - 체크 / X: 두꺼운 선 아이콘 → 흰색 버튼 글자색을 따라감
+const ICON_PENCIL =
+  '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>';
+const ICON_CHECK =
+  '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+const ICON_X =
+  '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>';
+
 // 항목별 버튼 그룹 (수정/저장 · 완료 · 삭제)
 function createButtonGroup(todo) {
   const buttonGroup = document.createElement("div");
@@ -343,21 +353,27 @@ function createButtonGroup(todo) {
       saveEditing(todo.id, editInput.value);
     });
   } else {
-    // 일반 모드: '수정' 버튼 → 수정 모드로 전환
-    editButton.textContent = "수정";
+    // 일반 모드: 연필 아이콘 → 수정 모드로 전환
+    editButton.innerHTML = ICON_PENCIL;
+    editButton.setAttribute("aria-label", "수정");
+    editButton.title = "수정";
     editButton.addEventListener("click", () => startEditing(todo.id));
   }
 
-  // 완료 버튼 (완료/취소 토글)
+  // 완료 버튼 (초록색 + 체크 아이콘, 클릭 시 완료/취소 토글)
   const completeButton = document.createElement("button");
   completeButton.className = "todo-item__button todo-item__button--complete";
-  completeButton.textContent = todo.completed ? "취소" : "완료";
+  completeButton.innerHTML = ICON_CHECK;
+  completeButton.setAttribute("aria-label", todo.completed ? "완료 취소" : "완료");
+  completeButton.title = todo.completed ? "완료 취소" : "완료";
   completeButton.addEventListener("click", () => toggleCompleted(todo.id));
 
-  // 삭제 버튼
+  // 삭제 버튼 (빨간색 + X 아이콘)
   const deleteButton = document.createElement("button");
   deleteButton.className = "todo-item__button todo-item__button--delete";
-  deleteButton.textContent = "삭제";
+  deleteButton.innerHTML = ICON_X;
+  deleteButton.setAttribute("aria-label", "삭제");
+  deleteButton.title = "삭제";
   deleteButton.addEventListener("click", () => deleteTodo(todo.id));
 
   buttonGroup.append(editButton, completeButton, deleteButton);
