@@ -1,8 +1,5 @@
 import { isSameDate, WEEKDAY_NAMES } from "../utils/date.js";
 
-// 일간 뷰 헤더.
-// 선택된 날짜를 "6월 9일 (월)" 형태로 보여주고, 이전/다음 날짜로 이동할 수 있다.
-// 오늘이면 "오늘" 배지를 함께 표시한다.
 function DayView({ selectedDate, onMoveDay }) {
   const isToday = isSameDate(selectedDate, new Date());
   const label =

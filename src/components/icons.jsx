@@ -1,7 +1,3 @@
-// 버튼에 사용할 인라인 SVG 아이콘 (라이브러리 없이 선/색만으로 표현)
-// 1차 과제의 ICON_PENCIL / ICON_CHECK / ICON_X 를 JSX 컴포넌트로 옮김.
-// stroke="currentColor" 라서 버튼 글자색을 그대로 따라간다.
-
 export function PencilIcon() {
   return (
     <svg

@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-/* ===== 디자인 토큰 (1차 과제 style.css의 :root 변수를 Tailwind @theme로 이전) =====
-   여기에 정의한 토큰은 bg-primary, text-muted 처럼 유틸리티 클래스로 사용할 수 있어요. */
 @theme {
   --color-primary: #672be0;
   --color-primary-dark: #571fc4;

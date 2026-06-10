@@ -1,5 +1,3 @@
-// 상태별 필터 탭 (전체 / 진행 중 / 완료).
-// 현재 필터 값은 App이 useState로 관리하고, 여기서는 표시 + 클릭 전달만 한다.
 const FILTERS = [
   { value: "all", label: "전체" },
   { value: "active", label: "진행 중" },
